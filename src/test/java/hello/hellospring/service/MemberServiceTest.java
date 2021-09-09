@@ -21,17 +21,13 @@ class MemberServiceTest {
     public void afterEach(){
         repository.clearStore();
     }
-
-
     @Test
     void 회원가입() {
         //given
         Member member = new Member();
         member.setName("hello");
-
         //when
         Long savedId = memberService.join(member);
-
         //then
         Member findMember = memberService.findOne(member.getId()).get();
         assertThat(member.getName()).isEqualTo(findMember.getName());
